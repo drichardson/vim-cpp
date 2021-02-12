@@ -9,7 +9,7 @@ function cpp#clang#Format() range
 	endif
 	let l:lines=(a:firstline+1).':'.(a:lastline+1)
 	echom "Formatting lines (1-based) ".l:lines
-	py3file ~/.vim/clang-format.py
+	call s:clangFormat()
 endfunction
 
 " Format a file on save. Use in an autocmd like this:
@@ -40,8 +40,14 @@ function cpp#clang#FormatOnSave()
 		let l:lines='all'
 	endif
 
-
-	py3file ~/.vim/clang-format.py
+	call s:clangFormat()
 
 endfunction
 
+" Run at top level since it needs to be done when executing a :source command.
+let s:packagedir = expand('<sfile>:p:h:h:h')
+
+function s:clangFormat()
+	let script = s:packagedir . '/clang-format.py'
+	execute 'py3file' script
+endfunction
