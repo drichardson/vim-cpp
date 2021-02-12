@@ -1,14 +1,14 @@
-*vim-c++.txt*		C++ plugin
+*vim-cpp.txt*		C++ plugin
 
-vim-c++ is a quality of life plugin for C++.
+vim-cpp is a quality of life plugin for C++.
 
-1. Install	|c++-install|
-2. Commands	|c++-commands|
+1. Install	|cpp-install|
+2. Commands	|cpp-commands|
 
 ==============================================================================
-1. Install							*c++-install*
+1. Install							*cpp-install*
 
-Install vim-c++ like any standard Vim |package|.
+Install vim-cpp like any standard Vim |package|.
 
 To run clang-format when you save a C or C++ file, add this autocommand to
 your .vimrc: >
@@ -16,7 +16,7 @@ your .vimrc: >
 <
 
 ==============================================================================
-2. Commands							*c++-commands*
+2. Commands							*cpp-commands*
 
 							*:SwitchSourceHeader*
 :SwitchSourceHeader 	Switch between a source file and it's corresponding
