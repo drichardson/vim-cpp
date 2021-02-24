@@ -2,6 +2,6 @@
 command SwitchSourceHeader call cpp#switch#SourceHeader()
 
 " Clang Formatting
-command -range ClangFormat	<line1>,<line2> call cpp#clang#Format()
-command ClangFormatAll		0,$ call cpp#clang#Format()
+command -range ClangFormat	<line1>,<line2> call cpp#clang#FormatRange()
+command ClangFormatAll		call cpp#clang#FormatAll()
 

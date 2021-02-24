@@ -4,7 +4,7 @@ let s:packagedir = expand('<sfile>:p:h:h:h')
 " Format a range. I've found this only works properly if the beginning of the
 " range has the function you want to format. You can't just arbitrarily format
 " a sub-section of a function, in my tests.
-function cpp#clang#Format() range
+function cpp#clang#FormatRange() range
 	if !executable('clang-format')
 		call cpp#common#Warn('Cannot find clang-format')
 		return
@@ -20,6 +20,27 @@ function cpp#clang#Format() range
 		execute 'pyfile' script
 	endif
 endfunction
+
+" Format a range. I've found this only works properly if the beginning of the
+" range has the function you want to format. You can't just arbitrarily format
+" a sub-section of a function, in my tests.
+function cpp#clang#FormatAll()
+	if !executable('clang-format')
+		call cpp#common#Warn('Cannot find clang-format')
+		return
+	endif
+	let l:lines='all'
+
+	" Do NOT move this code block into a function. It needs to be executed
+	" in the same Vim context that l:lines is defined.
+	let script = s:packagedir . '/clang-format.py'
+	if has('python3')
+		execute 'py3file' script
+	elseif has('python')
+		execute 'pyfile' script
+	endif
+endfunction
+
 
 " Format a file on save. Use in an autocmd like this:
 " autocmd BufWritePre *.h,*.cc,*.cpp,*.c call cpp#clang#FormatOnSave()
@@ -55,7 +76,6 @@ function cpp#clang#FormatOnSave()
 	elseif has('python')
 		execute 'pyfile' script
 	endif
-
 endfunction
 
 
