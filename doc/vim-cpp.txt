@@ -8,6 +8,9 @@ vim-cpp is a quality of life plugin for C++.
 ==============================================================================
 1. Install							*cpp-install*
 
+Install clang-format. You can find the latest released version of LLVM at
+https://releases.llvm.org/download.html.
+
 Install vim-cpp like any standard Vim |package|.
 
 To run clang-format when you save a C or C++ file, add this autocommand to
